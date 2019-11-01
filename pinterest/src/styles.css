@@ -1,0 +1,105 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+ html, body {
+    width: 100%;
+    height: 100%;
+}
+#main{
+    width: 100%;
+    box-sizing: border-box;
+}
+.mainContainer{
+    width: 100%;
+    padding-top: 65px;
+}
+.mainInner{
+    width: 100%;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+.mainContent{
+    margin: auto;
+}
+#columns{
+    position: relative;
+    column-width: 400px;
+    column-gap: 0px;
+}
+
+.card{
+    box-sizing: border-box;
+    position: absolute;
+    height: auto;
+    top: 0;
+    left:0;
+    width: 250px;
+    display: inline-block;
+    margin: 0;
+    margin-bottom: 15px;
+    padding: 8px;
+    
+}
+.imgContainer{
+    position: relative;
+    top: 0;
+    left: 0;
+ 
+    width: 100%;
+    box-sizing: border-box;
+  
+
+}
+img{
+    width: 100%;
+    border-radius: 7px;
+    height: 100%;
+
+}
+.tagContainer{
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-top: 4px;
+    display: flex;
+    flex-direction: row; 
+}
+@media (max-width:1999px) and (min-width:1750px){
+    .mainContent{
+        width: 1750px;
+    }
+}
+@media (max-width:1749px) and (min-width:1500px){
+    .mainContent{
+        width: 1500px;
+    }
+}
+@media (max-width:1499px) and (min-width:1250px){
+    .mainContent{
+        width: 1250px;
+    }
+}
+@media (max-width:1249px) and (min-width:1000px){
+    .mainContent{
+        width: 1000px;
+    }
+}
+@media (max-width:999px) and (min-width:750px){
+    .mainContent{
+        width: 750px;
+    }
+}
+@media (max-width:749px) and (min-width:0px){
+    .mainContent{
+        width: 500px;
+    }
+}
+
