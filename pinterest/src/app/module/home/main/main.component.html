@@ -1,10 +1,11 @@
 <div id='main'>
   <div class="mainContainer">
-    <div class="mainInner">
-      <div class="mainContent">
+    <div class="mainInner" >
+      <div class="mainContent"(window:resize)="onResize($event)"
+  >
         <div id="columns" 
         infiniteScroll
-        [infiniteScrollDistance]="10"
+        [infiniteScrollDistance]="1"
         [infiniteScrollThrottle]="50"
         (scrolled)="onScroll()"
         >
