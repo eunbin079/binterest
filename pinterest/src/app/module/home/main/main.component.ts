@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-
-
+import { Component, OnInit, HostListener } from '@angular/core';
+import { Inject } from '@angular/core';
+ import { DOCUMENT } from '@angular/platform-browser';
+ import { WINDOW } from '../window.service';
 
 @Component({
   selector: 'app-main',
+ 
   templateUrl: './main.component.html',
 
   styleUrls: ['./main.component.css']
@@ -11,15 +13,34 @@ import { Component, OnInit } from '@angular/core';
 
 export class MainComponent implements OnInit {
 
-
+  @HostListener('window:scroll',['$event'])
+  onWindowScroll(){
+    console.log("Scrroooll!!");
+  //  this.removePin(50);
+     console.log("window.pageYOffset"+this.window.pageYOffset);
+     console.log("window.pageYOffset"+window.pageYOffset);
+     console.log("document.documentElement.scrollTop"+this.document.documentElement.scrollTop)
+     console.log("document.documentElement.scrollTop"+document.documentElement.scrollTop)
+    // console.log("document.body.scrollTop"+this.document.body.scrollTop);
+     console.log("this.document.body.clientHeight"+this.screenHeight);
+    if(this.window.pageYOffset>this.screenHeight*0.8||this.document.documentElement.scrollTop>this.screenHeight*0.8)
+    {
+      this.addPin3(50);
+      console.log("====================add 50 more pin=========================");
+    }
+   }
 
   columnNum;
   startIdx=0;
   cardNum;
   screenWidth;
+  screenHeight=0;
   list:HTMLDivElement[]=[];
 
-  constructor() { 
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    @Inject(WINDOW) private window : Window
+  ) { 
      this.cardNum = 0;
      this.columnNum = 6;
     
@@ -28,7 +49,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.cardNum=0;
  
-    this.addPin3(50);
+    this.addPin3(100);
  
    
 
@@ -95,6 +116,7 @@ export class MainComponent implements OnInit {
     
     let i;
     let div = document.getElementById("columns");
+    let height=0;
     
     for(i=this.startIdx+this.cardNum;i<this.startIdx+this.cardNum+num;i++){
       
@@ -116,12 +138,19 @@ export class MainComponent implements OnInit {
         "</div>";
 
       this.setPosition(newPin);
-      await this.func2(i,newPin,div);
-      console.log(newPin);
+      let temp=await this.func2(i,newPin,div);
+      if(i%this.columnNum==0){
+      this.screenHeight += +temp;}
+      
+      
+
+    //  console.log(newPin);
 
     }
+    console.log(height);
+    div.style.height = height+"px";
     this.cardNum += num;
-   this.resizeElementHeight(div);
+
     
   }
   resizeElementHeight(element) {
@@ -183,9 +212,10 @@ export class MainComponent implements OnInit {
 
   
  
-  onScroll(){
-    console.log("Scrroooll!!");
-    this.removePin(20);
-    this.addPin3(20);
+ 
+
+   onScrollUp(){
+    console.log("Scroll up!@!");
+
    }
 }

@@ -15,6 +15,55 @@
       <div class="menuContainer" style="background:chartreuse">
         menu
       </div>
+      <div class="plusPin btn" style="background: brown; margin-left:500px" (click)="onPlusPinClick()">
+        plus
+      </div>
+    </div>
+
+    <div class="popupContainer" *ngIf="isPlusContentOpend">
+      <div class="popupInner">
+        <div class="popupTitle">
+          <h2>핀 또는 보드 추가</h2>
+        </div>
+        <div class="popupContents">
+          <div class="board btn">
+            보드
+          </div>
+          <div class="pin ">
+            핀
+          <div>
+              웹 페이지 <input class="btn"/><br/>
+           사진 <input type="file" ng2FileSelect [uploader]="uploader" class="btn"/>
+         
+         <div *ngFor="let item of uploader.queue">
+           
+            <button class="btn" 
+            (click)="item.upload()"
+            
+            >UPLOAD</button></div>
+          
+          </div>
+
+          </div>
+
+        </div>
+        
+      </div>
+    </div>
+
+
+
+
+    <div class="popContainer">
+      <div class="popInner">
+        <div>
+          <button class="closeToday">오늘하루 안보기X</button>
+        </div>
+        껄껄껄 ,,,,,,
+
+      </div>
     </div>
   </div>
 </div>
+
+

@@ -29,9 +29,12 @@ html {
     margin: auto;
 }
 #columns{
+    width: 100%;
     position: relative;
     column-width: 400px;
     column-gap: 0px;
+    height: 100%;
+ 
 }
 
 .card{
